@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dice Roller</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input {
+      font-size: 2rem;
+      width: 100px;
+      text-align: center;
+    }
+    button {
+      font-size: 1.5rem;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #diceResult {
+      margin: 20px;
+      font-size: 1.5rem;
+    }
+    #diceImages span {
+      font-size: 3rem;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dice Roller</h1>
+  <label># of Dice:</label>
+  <input type="number" id="numOfDice" value="1" min="1" />
+  <button onclick="rollDice()">Roll Dice</button>
+  <div id="diceResult"></div>
+  <div id="diceImages"></div>
+
+  <script>
+    function rollDice() {
+      const numOfDice = document.getElementById("numOfDice").value;
+      const diceResult = document.getElementById("diceResult");
+      const diceImages = document.getElementById("diceImages");
+
+      const diceFaces = ['⚀','⚁','⚂','⚃','⚄','⚅'];
+      const values = [];
+      const icons = [];
+
+      for (let i = 0; i < numOfDice; i++) {
+        const roll = Math.floor(Math.random() * 6);
+        values.push(roll + 1);
+        icons.push(`<span>${diceFaces[roll]}</span>`);
+      }
+
+      diceResult.textContent = `You rolled: ${values.join(', ')}`;
+      diceImages.innerHTML = icons.join('');
+    }
+  </script>
+</body>
+</html>
+
+
+
+<!--  design 1
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Colorful Dice Roller</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+      background: linear-gradient(to right, #007cf0, #00dfd8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    label {
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    input[type="number"] {
+      font-size: 1.5rem;
+      width: 100px;
+      padding: 5px;
+      text-align: center;
+      margin: 10px;
+      border: 2px solid #00bcd4;
+      border-radius: 10px;
+    }
+
+    button {
+      font-size: 1.3rem;
+      padding: 10px 20px;
+      background: linear-gradient(to right, #007cf0, #00dfd8);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(to right, #00bcd4, #00f2fe);
+    }
+
+    #diceResult {
+      font-size: 1.2rem;
+      margin-top: 20px;
+    }
+
+    #diceImages {
+      margin-top: 15px;
+    }
+
+    #diceImages span {
+      font-size: 4rem;
+      margin: 10px;
+      display: inline-block;
+      animation: pop 0.3s ease-in-out;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎲 Dice Roller</h1>
+    <label for="numOfDice"># of Dice:</label>
+    <input type="number" id="numOfDice" value="1" min="1" />
+    <br />
+    <button onclick="rollDice()">Roll Dice</button>
+    <div id="diceResult"></div>
+    <div id="diceImages"></div>
+  </div>
+
+  <script>
+    function rollDice() {
+      const numOfDice = document.getElementById("numOfDice").value;
+      const diceResult = document.getElementById("diceResult");
+      const diceImages = document.getElementById("diceImages");
+
+      const diceFaces = ['⚀','⚁','⚂','⚃','⚄','⚅'];
+      const values = [];
+      const icons = [];
+
+      for (let i = 0; i < numOfDice; i++) {
+        const roll = Math.floor(Math.random() * 6);
+        values.push(roll + 1);
+        icons.push(`<span>${diceFaces[roll]}</span>`);
+      }
+
+      diceResult.textContent = `You rolled: ${values.join(', ')}`;
+      diceImages.innerHTML = icons.join('');
+    }
+  </script>
+</body>
+</html>-->
